@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="東京大学運動会フェンシング部 公式ウェブサイト。新入生募集・戦績・スケジュール・お問い合わせ。">
+  <title>東京大学運動会フェンシング部 | 新入生募集・部活情報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --deep-blue: #0d2247;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --gray: #8a8a8a;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --font-ui: 'DM Sans', sans-serif;
+      --hero-title-size: clamp(1.25rem, 8.5vw, 7rem);
+      --line-body: 2.0;
+      --line-heading: 1.1;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 0.95rem;
+      line-height: var(--line-body);
+      color: var(--cream);
+      background: var(--navy);
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+    h1, h2, h3 { font-family: var(--font-serif-jp); font-weight: 400; line-height: var(--line-heading); }
+
+    nav.global-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 2rem;
+      background: #0f2047;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-toggle { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; color: var(--cream); }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: currentColor; transition: opacity 0.2s, transform 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-links { flex: 1 1 auto; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0.5rem 1.25rem; min-width: 0; }
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--cream);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6rem 1.5rem 4rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(13, 34, 71, 0.6) 0%, var(--navy) 70%);
+      overflow: hidden;
+    }
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.3);
+      transform: rotate(-12deg);
+      opacity: 0.5;
+    }
+    .hero::before { top: 25%; left: -25%; }
+    .hero::after { bottom: 30%; right: -25%; transform: rotate(12deg); }
+    .hero-content { position: relative; z-index: 1; text-align: center; max-width: 100%; }
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: var(--hero-title-size);
+      color: var(--cream);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .hero-subtitle {
+      font-family: var(--font-serif-jp);
+      font-weight: 300;
+      font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+      color: var(--gray);
+      margin: 0 0 1.5rem;
+      letter-spacing: 0.1em;
+    }
+    .hero-lead {
+      font-size: clamp(0.875rem, 2vw, 1.1rem);
+      color: var(--cream);
+      margin: 0 0 2rem;
+      line-height: 2;
+      text-align: left;
+      white-space: pre-line;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .hero-cta-fill {
+      display: inline-block;
+      padding: 0.85rem 1.6rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 0;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hero-cta-fill:hover { transform: translateY(-2px); background: var(--gold-light); color: var(--navy); }
+    .hero-cta-outline {
+      display: inline-block;
+      padding: 0.85rem 1.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .hero-cta-outline:hover { transform: translateY(-2px); background: rgba(201, 168, 76, 0.1); color: var(--gold-light); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gray);
+    }
+    .hero-scroll::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gray);
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+    }
+    .stat-cell {
+      text-align: center;
+      padding: 0 1rem;
+      border-right: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-value {
+      font-family: var(--font-serif-jp);
+      font-weight: 300;
+      font-size: 3rem;
+      color: var(--gold-light);
+      line-height: 1.1;
+    }
+    .stat-value .stat-unit-small {
+      font-size: 0.5em;
+      vertical-align: super;
+      color: var(--gray);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.25rem;
+    }
+    .stat-note {
+      font-size: 0.7rem;
+      color: var(--gray);
+      margin-top: 0.2rem;
+    }
+
+    footer.site-footer {
+      padding: 2rem 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; color: var(--cream); margin: 0 0 0.25rem; }
+    .footer-en { font-size: 0.8rem; color: var(--gray); margin: 0 0 0.5rem; }
+    .footer-since { font-family: var(--font-serif-jp); font-size: 0.8rem; color: var(--cream); margin: 0 0 0.5rem; }
+    .footer-copy { font-size: 0.75rem; color: var(--gray); margin: 0; }
+    .footer-right { text-align: right; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-end; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.85rem; color: var(--gray); }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-place { font-size: 0.8rem; color: var(--gray); margin: 0; }
+
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem;
+        background: #0f2047;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+      .global-nav.is-open .nav-links { display: flex; }
+      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid rgba(201, 168, 76, 0.08); }
+      .nav-links a:last-child { border-bottom: none; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell { border-right: none; border-bottom: 1px solid rgba(201, 168, 76, 0.15); padding-bottom: 1rem; margin-bottom: 1rem; }
+      .stat-cell:nth-last-child(-n+2) { border-bottom: none; margin-bottom: 0; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-right { text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="global-nav" aria-label="メインメニュー">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="U Tokyo FENCING TEAM"></a>
+    <button type="button" class="nav-toggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="results.html">Results</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="newcomers.html">Newcomers</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html">Members</a>
+      <a href="obog.html">OB・OG</a>
+      <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+    </div>
+  </nav>
+  <script>(function(){var n=document.querySelector('.global-nav');var b=document.querySelector('.nav-toggle');if(b){b.addEventListener('click',function(){var open=n.classList.toggle('is-open');b.setAttribute('aria-expanded',open);});}})();</script>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">心を「突く」青春を。</h1>
+        <p class="hero-subtitle">東京大学運動会フェンシング部</p>
+        <p class="hero-lead">　フェンシングは剣を使った1対1のスポーツです。選手は全身を覆う防護服とマスクを着用し、相手の体に剣先を当てることで得点を競います。
+　フェンシングは優雅な貴族のスポーツのイメージを持たれがちですが、実際は『闘うチェス』とも呼ばれる、身体能力だけでなく頭脳も求められるスポーツです。
+　使用する剣の種類によって『フルーレ』『エペ』『サーブル』の3種目に分かれており、それぞれ有効な攻撃部位やルールが異なります。
+　東京大学運動会フェンシング部は週3日(長期休み中は週4日)で活動しています。</p>
+        <div class="hero-ctas">
+          <a href="newcomers.html" class="hero-cta-fill">新入生の方へ →</a>
+          <a href="about.html" class="hero-cta-outline">About us</a>
+        </div>
+      </div>
+      <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <section class="stats-bar" aria-label="部の概要">
+      <div class="stat-cell">
+        <div class="stat-value">30<span class="stat-unit-small">名</span></div>
+        <div class="stat-label">部員数</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value"><span class="stat-unit-small">週</span> 3 <span class="stat-unit-small">日</span></div>
+        <div class="stat-label">練習日</div>
+        <div class="stat-note">※休暇期間中は週4日</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">The University of Tokyo Fencing Team</p>
+        <p class="footer-since">since 1936</p>
+        <p class="footer-en">東京大学運動会フェンシング部</p>
+        <p class="footer-copy">© 東京大学運動会フェンシング部 All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="results.html">Results</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="newcomers.html">Newcomers</a>
+          <a href="contact.html">Contact</a>
+          <a href="members.html">Members</a>
+          <a href="obog.html">OB・OG</a>
+          <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+        </div>
+        <p class="footer-place">駒場キャンパス第一体育館</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ngrok version:*)",
+      "Bash(brew install:*)",
+      "Bash(lsof:*)",
+      "Bash(done)",
+      "Bash(npm:*)",
+      "Bash(netlify login:*)",
+      "Bash(netlify deploy:*)",
+      "WebFetch(domain:utfc.info)",
+      "WebSearch",
+      "WebFetch(domain:lookup.icann.org)",
+      "Bash(whois:*)",
+      "Bash(dig:*)",
+      "Bash(git --version:*)",
+      "Bash(node --version:*)",
+      "Bash(npx netlify --version)"
+    ]
+  }
+}

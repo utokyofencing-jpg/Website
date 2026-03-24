@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="東京大学運動会フェンシング部 Members。">
+  <title>Members | 東京大学運動会フェンシング部</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --deep-blue: #0d2247;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --gray: #8a8a8a;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --font-ui: 'DM Sans', sans-serif;
+      --line-body: 2.0;
+      --line-heading: 1.1;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 0.95rem;
+      line-height: var(--line-body);
+      color: var(--cream);
+      background: var(--navy);
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+    h1, h2, h3 { font-family: var(--font-serif-jp); font-weight: 400; line-height: var(--line-heading); }
+
+    nav.global-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 2rem;
+      background: #0f2047;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-toggle { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; color: var(--cream); }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: currentColor; transition: opacity 0.2s, transform 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-links {
+      flex: 1 1 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem 1.25rem;
+      min-width: 0;
+    }
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--cream);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+
+    main.page-main {
+      padding: 6rem 1.5rem 4rem;
+      min-height: 100vh;
+    }
+    .page-inner {
+      width: min(90vw, 960px);
+      margin: 0 auto;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--gold-light);
+      text-align: center;
+      margin: 0 0 2.5rem;
+      letter-spacing: 0.02em;
+    }
+    .members-intro {
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+    .member-grade { font-family: var(--font-serif-jp); font-size: 1.25rem; color: var(--gold-light); margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 168, 76, 0.2); }
+    .member-grade:first-of-type { margin-top: 0; }
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .member-card {
+      padding: 1.5rem;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: var(--deep-blue);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .member-card:hover {
+      border-color: rgba(201, 168, 76, 0.5);
+      transform: translateY(-4px);
+    }
+    .member-name { font-family: var(--font-serif-jp); font-size: 1.1rem; color: var(--cream); margin: 0 0 0.25rem; }
+    .member-role { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .member-detail { font-size: 0.85rem; color: var(--gray); margin: 0; line-height: 1.7; }
+
+    footer.site-footer {
+      padding: 2rem 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; color: var(--cream); margin: 0 0 0.25rem; }
+    .footer-en { font-size: 0.8rem; color: var(--gray); margin: 0 0 0.5rem; }
+    .footer-since { font-family: var(--font-serif-jp); font-size: 0.8rem; color: var(--cream); margin: 0 0 0.5rem; }
+    .footer-copy { font-size: 0.75rem; color: var(--gray); margin: 0; }
+    .footer-right { text-align: right; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-end; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.85rem; color: var(--gray); }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-place { font-size: 0.8rem; color: var(--gray); margin: 0; }
+
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 1rem; background: #0f2047; border-bottom: 1px solid rgba(201, 168, 76, 0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .global-nav.is-open .nav-links { display: flex; }
+      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid rgba(201, 168, 76, 0.08); }
+      .nav-links a:last-child { border-bottom: none; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-right { text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="global-nav" aria-label="メインメニュー">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="U Tokyo FENCING TEAM"></a>
+    <button type="button" class="nav-toggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="results.html">Results</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="newcomers.html">Newcomers</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html" class="active">Members</a>
+      <a href="obog.html">OB・OG</a>
+      <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+    </div>
+  </nav>
+  <script>(function(){var n=document.querySelector('.global-nav');var b=document.querySelector('.nav-toggle');if(b){b.addEventListener('click',function(){var open=n.classList.toggle('is-open');b.setAttribute('aria-expanded',open);});}})();</script>
+
+  <main class="page-main">
+    <div class="page-inner">
+      <h1 class="page-title">Members</h1>
+      <p class="members-intro">東京大学運動会フェンシング部で活動する部員の紹介です。</p>
+
+      <h2 class="member-grade">5年生(53期)</h2>
+      <div class="members-grid">
+        <article class="member-card">
+          <h3 class="member-name">上村修</h3>
+          <p class="member-role">理科一類→理学部・開成　フルーレ・エペ</p>
+          <p class="member-detail">開成出身でありながらフェンシングを始めたのは中3と異色の経歴をもつ。ウォーミングアップにおいてはメニューの規定回数よりも多くの回数をこなすなどストイックさに溢れる。噂によるとスマブラが強いらしく、その手先の器用さがフルーレでのポイントの精緻さにも表れている。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">乙川文隆</h3>
+          <p class="member-role">文科一類→法学部・新潟　フルーレ・エペ</p>
+          <p class="member-detail">新潟出身の地理好きボーイ。コシヒカリのように輝くオーラを放つ彼は、高校時代にはフェンシング部のキャプテンを務めたほどのリーダーシップと実力の持ち主。旅行好きで気づいたらどこかに行ってきており、その活力はフェンシングでも存分に生かされている。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">白石託未</h3>
+          <p class="member-role">理科一類→理学部・広島なぎさ　フルーレ・サーブル</p>
+          <p class="member-detail">ウェーブがかった長髪に細縁の眼鏡、数学好きと非常に知的な印象を与える少年。普段はニコニコしておりとても優しいが、プレーになると素早くアグレッシブに動き、試合ではよく吠える。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">髙岸柊瑛</h3>
+          <p class="member-role">理科一類→理学部・青稜　フルーレ・サーブル</p>
+          <p class="member-detail">小中で6年間フルーレをやっていた経験者男子。大学からサーブルを新しく始めた。フルーレで培ってきたフットワーク、距離感を活かしてサーブル陣の救世主になって欲しい。趣味はゲームで、据え置き型のゲームをこよなく愛する。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">竹川兼心</h3>
+          <p class="member-role">理科二類・開成　フルーレ・エペ</p>
+          <p class="member-detail">開成高校フェンシング部からやってきた期待の新人。試合の待ち時間では周囲の騒音をものともせず難しそうな本を黙々と読むミステリアスなインテリ系男子で、その素顔は未だ謎に包まれている。高校時代では主にフルーレを専門としていたとのこと。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">森哲也</h3>
+          <p class="member-role">理科一類→工学部・灘　フルーレ・サーブル</p>
+          <p class="member-detail">NADAのシャイボーイ。普段は寡黙だが、話してみると彼のユーモアにもっと触れたくなること間違いなし。表情や仕草にどこか神秘性を感じる。本能からか、サーブルで相手から出される剣をよけることに長けているらしい。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">森下侑里乃</h3>
+          <p class="member-role">理科二類→医学部・白百合学園　フルーレ・エペ</p>
+          <p class="member-detail">学業と部活を完璧に両立させているほんわか系女子部員。12年間のお嬢様学校生活を送った割には、良い意味でお嬢様っぽくない。新歓の押しは強め。醸し出す柔らかい雰囲気や小柄な身体からは想像もつかないような伸びのあるファントにやられないよう諸君は注意されたい。</p>
+        </article>
+      </div>
+
+      <h2 class="member-grade">4年生(54期)</h2>
+      <div class="members-grid">
+        <article class="member-card">
+          <h3 class="member-name">相場俊輔</h3>
+          <p class="member-role">文科二類→経済学部・早稲田　フルーレ・エペ</p>
+          <p class="member-detail">中学からの経験者で弊部2人目の推薦生。彼の繰り出す伸びのあるファントを始めとした正統派フェンシングは見る人を魅了する。理路整然と(長文で)先輩に対しても意見を表明していく姿は彼が推薦生であることを彷彿させるものである。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">阿部みのり</h3>
+          <p class="member-role">文科三類→文学部・仙台第一　フルーレ・エペ</p>
+          <p class="member-detail">仙台から来た希少な経験者女子。残しや切り返しでの得点が持ち味で、次世代女子フェンシング部を引っ張る頼もしい存在。54期のお姉さん的(？)存在。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">川島悠生</h3>
+          <p class="member-role">理科二類→工学部・海陽　フルーレ・エペ</p>
+          <p class="member-detail">理系ドイツ語TLPという学内最高カーストに位置するも謙虚で真面目なフェンサー。間合いの感覚に長けているのはさすが剣道経験者。2年生からの入部となったが、新歓時にそれを明かさずにいたため、新入生向けの見当違いなアドバイスをして恥をかいた先輩がいたとかいなかったとか。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">設樂創平</h3>
+          <p class="member-role">理科一類→工学部・洛星　フルーレ・サーブル</p>
+          <p class="member-detail">京都の洛中からやってきた期待の"星"。53期サーブル陣に日々しごかれながら将来の東大サーブル陣を引っ張っていく存在となるために精進中。54期きっての愛されキャラで「したら〜ん！」とみんなから呼ばれている。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">篠原鼓太</h3>
+          <p class="member-role">文科二類→経済学部・湘南　フルーレ・エペ</p>
+          <p class="member-detail">湘南出身の爽やかフェンサー。剣捌きが素早く、入部当初からフルーレ団体戦のアンカーを担うほどの実力者。その上向上心も凄まじく、先輩のアドバイスを熱心に聞く姿が見られる。渋谷の某オシャレカフェでバイトするなど、一番大学生を満喫していると言っても過言ではない。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">高山幸大</h3>
+          <p class="member-role">文科三類→法学部・鶴丸　サーブル</p>
+          <p class="member-detail">鹿児島からやってきた小6からの経験者。インハイ準優勝などの実績を掲げる彼の強さはとどまることを知らず、OB・OG会報に掲載されるフェンシング部の歴史のページに彼の入部が記載されているほどである。キレキレのフットワークと勝負強さでサーブル陣を牽引する存在となっている。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">松尾健成</h3>
+          <p class="member-role">理科二類→農学部・浦和　フルーレ・エペ</p>
+          <p class="member-detail">52期主将・齋藤の後輩であり、日本一濃密な男子校こと浦高イズムをしっかり引き継いでいる一方で、やるべき仕事をきっちりこなす有能な一面も併せ持つ。毎朝遅延するで悪名高い埼京線のヘビーユーザー。大学始めとは思えないほどの綺麗なフォームと54期の中で飛び抜けている長身を活かして、東大の「剣聖」となること間違いなしである。</p>
+        </article>
+      </div>
+
+      <h2 class="member-grade">3年生(55期)</h2>
+      <div class="members-grid">
+        <article class="member-card">
+          <h3 class="member-name">五十嵐瑶希</h3>
+          <p class="member-role">理科二類・筑波大学附属　フルーレ・エペ</p>
+          <p class="member-detail">貴重な左利きプレイヤー。大学始めだが、その溢れる闘志は格上の相手をも圧倒し、すでにたくさんの大金星を挙げている。全国公個人フルーレでの活躍は本当にすごかった。一方、試合中以外ではいつもほわほわにこにこでかわいい。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">乙川文旺</h3>
+          <p class="member-role">文科一類・新潟　フルーレ・エペ</p>
+          <p class="member-detail">兄文隆と同じく法学部推薦で入学してきた新進気鋭のエリート。長い手足を活かしながら旺んに攻撃する姿が印象的である。フェンシング以外にも授業・オリター・推薦生のつどい等多種多様な活動に精力的に取り組んでいる。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">久保田凜太郎</h3>
+          <p class="member-role">文科二類・筑波大学付属駒場　フルーレ・サーブル</p>
+          <p class="member-detail">通称「くぼりん」。筑駒出身で駒場東大駅を使うのは早8年目。サーブル陣唯一の左利きとして日々練習に励んでいる。未経験ながら、長身左利きから繰り出されるアタックが、サーブル陣を引っ張ってくれる存在になるに違いない。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">小山遙花</h3>
+          <p class="member-role">文科三類・山形東　フルーレ・サーブル</p>
+          <p class="member-detail">山形県からやってきた女子経験者フェンサー。筆者の知る限り、史上最速入部を果たした。サーブルに対する彼女の情熱はとどまることを知らず、「三度の飯よりサーブル」と豪語するほど。漫画『One Piece』と哲学が好きらしい。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">齋藤晴輝</h3>
+          <p class="member-role">理科一類・新潟　フルーレ・エペ</p>
+          <p class="member-detail">お馴染み新潟高校からの経験者ホープ。フルーレでの素早いフットワークと剣捌きが光るが、実はロボコンに力を入れるインテリ系でもある。全国公では多くの試合に出場し、エペでジャイアントキリングを起こした。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">鈴木智仁</h3>
+          <p class="member-role">文科三類・開成　フルーレ・エペ</p>
+          <p class="member-detail">開成出身高身長左利きフェンサー。フェンシング未経験ながらも、恵まれた体格を生かしたアロンジェブラは迫力十分で高いポテンシャルを秘めている。高校時代はラグビー部に所属していたとのこと。多趣味で多くのサークルに所属しており、忙しくも充実した大学生活を送っていることだろう。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">藤田松義</h3>
+          <p class="member-role">理科二類・開成　フルーレ</p>
+          <p class="member-detail">55期に3人いる開成出身フェンサーの一角を占める、期待の左利き経験者ホープ。行事等にも熱心に取り組み大学生活を満喫しているが、実は推薦入学者であり、勉学に励むとっても優秀な青年である。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">古橋史崇</h3>
+          <p class="member-role">理科一類・開成　フルーレ・サーブル</p>
+          <p class="member-detail">開成からやってきた理系男子。パズルや将棋を卒なくこなす頭脳と積極的に練習に参加し試合で攻撃の手を緩めない姿勢で大学始めながらも邁進中。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">矢吹水蓮</h3>
+          <p class="member-role">文科三類・山形東　フルーレ・サーブル</p>
+          <p class="member-detail">小山さんに誘われて入部してくれた山形ガール。大学始めとは思えないフットワークとフィジカルの強さで先輩をびびらせている。自分からアタックしに行ける積極性も持ち合わせており、ポイントゲッターの素質をのぞかせる。ショートヘアがめちゃめちゃ似合っている。</p>
+        </article>
+      </div>
+
+      <h2 class="member-grade">2年生(56期)</h2>
+      <div class="members-grid">
+        <article class="member-card">
+          <h3 class="member-name">迫田鼓太郎</h3>
+          <p class="member-role">理科一類・開成　フルーレ</p>
+          <p class="member-detail">幼少期からフェンシングに触れており、フルーレの実力は現役の誰にも勝る。出稽古で力を磨いているらしい。春関や全国公では男子フルーレのアンカーとしてチームを引っ張り、優勝に大きく貢献した。ポイント精度に裏打ちされた堂々としたフェンシングがとても魅力である。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">佐々木敦朗</h3>
+          <p class="member-role">理科二類・横浜翠嵐　フルーレ</p>
+          <p class="member-detail">高校でサッカーをしていたのでガタイが良く、またパラードの速さには光るものを感じさせられる。4月と比べると表情とフットワークが柔らかくなったような気がする。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">土居日向</h3>
+          <p class="member-role">理科一類・岡山大安寺　エペ</p>
+          <p class="member-detail">下の名前の読み方は「ひゅうが」。ファイティング中、時に岩のように動かないことがあるのでこちらがいい気になって簡単なアタックをしてしまうと、即座にリポストが飛んでくる。一見寡黙に見えて実は毒舌だったり、ぼそっと面白いことを口にしたりする。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">林健太郎</h3>
+          <p class="member-role">文科三類・斐太　エペ</p>
+          <p class="member-detail">春関で初めて個人戦に出場し、練習歴わずか1か月余りでプール1勝を挙げる快挙。練習モチベーションが高く、先輩試合しましょう！と誘ってくれるのはとても嬉しい。トリコが大好きらしく、自炊にハマっている様子が容易に想像できる。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">関根儀</h3>
+          <p class="member-role">文科二類・開成　エペ・フルーレ</p>
+          <p class="member-detail">55期の藤田と高校時代の部活同期。高校でフェンシングを一区切りにしようとユニフォームを譲ったものの、大学で再び始めることになり新調したらしく、実はかなりの熱意がある。一見おとなしい印象だが、エペでは攻撃的で速い剣さばきを披露し、一度剣を取られると厄介である。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">深谷日嵩</h3>
+          <p class="member-role">理科二類・岡崎　サーブル</p>
+          <p class="member-detail">普段は物静かで落ち着いており、その冷静さを活かし試合中も相手をよく観察してプレイしている。七大戦全国公に出場し惜しくも勝ち星を取れなかったがその成長は誰もが認めるところだろう。未経験ながらも一つ一つの動作が綺麗。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">山本涼介</h3>
+          <p class="member-role">文科二類・麻布　エペ・フルーレ</p>
+          <p class="member-detail">麻布からやってきた爽やかボーイ。部活では先輩にも同期にもいつも爽やかな笑顔を振りまいている。高校で野球をやっていたためか、新歓の時から動作に光るものがあった。最近では、フルーレに加えてエペを始めたり、夏休みに語学留学をしたりと、彼の成長はとどまることを知らない。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">佐藤泰成</h3>
+          <p class="member-role">文科三類・岡山操山　エペ</p>
+          <p class="member-detail">55期矢吹水蓮と同じクラスの泰成くん。一番初めはただの賑やかしでフェンシングのサーオリに来ただけだったのに、気づいた時にはフェンシングの魅力に取り憑かれ入部していた。2年生入部なばっかりに入部して数ヶ月で執行代の役職に任命され、55期一同非常に可哀想に思っている。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">足立晃一</h3>
+          <p class="member-role">文科一類・東海　サーブル</p>
+          <p class="member-detail">サーブル陣からしたらとてもありがたい、未経験サーブル陣の1人。普段は寡黙な彼だが、プレーでは相手をよく見て華麗なパラード・リポストを見せつけてくれる。自己紹介ブログではサーブルの無双感が気に入ったと語ってくれていた。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">吉良春希</h3>
+          <p class="member-role">理科一類・日比谷　サーブル</p>
+          <p class="member-detail">未経験でありながら、七大戦では悠々と勝利を収めていた。55期のサーブル陣も普段のファイティングから普通に負けることがあり、そのポテンシャルは計り知れない。持ち前の長身とセンスで、これからのサーブルを担ってくれるだろう。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">米田駿</h3>
+          <p class="member-role">文科一類・聖光学院　フルーレ</p>
+          <p class="member-detail">ようこそフルーレへ。貴重な未経験フルーレ陣の一人。普段は穏やかで冷静な佇まいながら、一転して猪突猛進のアタックを繰り出し、思わぬ得点を奪われることもしばしば。その切れ味ある一撃をさらに磨き上げれば、大きな武器となるはず。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">五十嵐光悌</h3>
+          <p class="member-role">理科二類・横浜翠嵐　フルーレ</p>
+          <p class="member-detail">漫画とお笑いが好きな未経験フルーレ陣のひとり。ファイティングでは未経験とは思えない試合運びで、毎度審判をする上級生を楽しませてくれる。自己紹介スライド曰く今年の目標は「だらけない」とのことだが、部活ではいつだらけているのかわからないくらい勤勉な彼の様子がうかがえる。</p>
+        </article>
+        <article class="member-card">
+          <h3 class="member-name">加藤由太郎</h3>
+          <p class="member-role">理科二類・岡山大安寺　サーブル・フルーレ</p>
+          <p class="member-detail">coming soon...（？）</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">The University of Tokyo Fencing Team</p>
+        <p class="footer-since">since 1936</p>
+        <p class="footer-en">東京大学運動会フェンシング部</p>
+        <p class="footer-copy">© 東京大学運動会フェンシング部 All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="results.html">Results</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="newcomers.html">Newcomers</a>
+          <a href="contact.html">Contact</a>
+          <a href="members.html">Members</a>
+          <a href="obog.html">OB・OG</a>
+          <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+        </div>
+        <p class="footer-place">駒場キャンパス第一体育館</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

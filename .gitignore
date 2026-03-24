@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Netlify local state
+.netlify/
+
+# ローカル開発用ファイル
+start-server.sh
+README-開き方.md

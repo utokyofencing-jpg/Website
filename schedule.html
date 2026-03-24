@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="年間スケジュール | 東京大学運動会フェンシング部">
+  <title>Schedule | 東京大学運動会フェンシング部</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy: #0a1628; --deep-blue: #0d2247; --gold: #c9a84c; --gold-light: #e8c97a; --cream: #f5f0e8; --gray: #8a8a8a; --font-display: 'Cormorant Garamond', serif; --font-serif-jp: 'Noto Serif JP', serif; --font-ui: 'DM Sans', sans-serif; --line-body: 2.0; --line-heading: 1.1; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-ui); font-weight: 400; font-size: 0.95rem; line-height: var(--line-body); color: var(--cream); background: var(--navy); }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+    h1, h2, h3 { font-family: var(--font-serif-jp); font-weight: 400; line-height: var(--line-heading); }
+    nav.global-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 2rem; background: #0f2047; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.15); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-toggle { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; color: var(--cream); }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: currentColor; transition: opacity 0.2s, transform 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-links { flex: 1 1 auto; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0.5rem 1.25rem; min-width: 0; }
+    .nav-links a { font-family: var(--font-ui); font-weight: 400; font-size: 0.9rem; color: var(--cream); position: relative; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--gold-light); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+    main.page-main { padding: 6rem 1.5rem 4rem; min-height: 100vh; background: var(--deep-blue); }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.2rem); color: var(--gold-light); text-align: center; margin: 0 0 2rem; letter-spacing: 0.02em; }
+    .schedule-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .schedule-cell { padding: 1.25rem; border: 1px solid rgba(201, 168, 76, 0.15); background: rgba(0,0,0,0.1); }
+    .schedule-cell .month { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .schedule-cell .event { font-size: 0.9rem; color: var(--cream); }
+    footer.site-footer { padding: 2rem 1.5rem; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(201, 168, 76, 0.15); }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 960px; margin: 0 auto; align-items: center; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; color: var(--cream); margin: 0 0 0.25rem; }
+    .footer-en { font-size: 0.8rem; color: var(--gray); margin: 0 0 0.5rem; }
+    .footer-since { font-family: var(--font-serif-jp); font-size: 0.8rem; color: var(--cream); margin: 0 0 0.5rem; }
+    .footer-copy { font-size: 0.75rem; color: var(--gray); margin: 0; }
+    .footer-right { text-align: right; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-end; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.85rem; color: var(--gray); }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-place { font-size: 0.8rem; color: var(--gray); margin: 0; }
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 1rem; background: #0f2047; border-bottom: 1px solid rgba(201, 168, 76, 0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .global-nav.is-open .nav-links { display: flex; }
+      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid rgba(201, 168, 76, 0.08); }
+      .nav-links a:last-child { border-bottom: none; }
+      .schedule-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-right { text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="global-nav" aria-label="メインメニュー">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="U Tokyo FENCING TEAM"></a>
+    <button type="button" class="nav-toggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="results.html">Results</a>
+      <a href="schedule.html" class="active">Schedule</a>
+      <a href="newcomers.html">Newcomers</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html">Members</a>
+      <a href="obog.html">OB・OG</a>
+      <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+    </div>
+  </nav>
+  <script>(function(){var n=document.querySelector('.global-nav');var b=document.querySelector('.nav-toggle');if(b){b.addEventListener('click',function(){var open=n.classList.toggle('is-open');b.setAttribute('aria-expanded',open);});}})();</script>
+
+  <main class="page-main">
+    <h1 class="section-title">年間スケジュール</h1>
+    <div class="schedule-inner">
+      <div class="schedule-grid">
+        <div class="schedule-cell">
+          <div class="month">04月</div>
+          <div class="event">新歓練習・体験入部<br>全日本学生カップ</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">05月</div>
+          <div class="event">関東学生リーグ戦・剛騎杯</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">06月</div>
+          <div class="event">春季関東国公立大会</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">07月</div>
+          <div class="event">試験オフ</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">08月</div>
+          <div class="event">七大学戦・全国国公立選手権</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">09月</div>
+          <div class="event">夏合宿</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">10月</div>
+          <div class="event">関東学生フェンシング選手権</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">11月</div>
+          <div class="event">全日本学生選手権・秋季関東国公立大会</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">12月</div>
+          <div class="event">北岡杯・忘年会</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">01月</div>
+          <div class="event">JOC杯・試験オフ</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">02月</div>
+          <div class="event">アパッチ杯(1年生大会)・双青戦(京大戦)</div>
+        </div>
+        <div class="schedule-cell">
+          <div class="month">03月</div>
+          <div class="event">春合宿・OB/OG総会・追いコン</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">The University of Tokyo Fencing Team</p>
+        <p class="footer-since">since 1936</p>
+        <p class="footer-en">東京大学運動会フェンシング部</p>
+        <p class="footer-copy">© 東京大学運動会フェンシング部 All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="results.html">Results</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="newcomers.html">Newcomers</a>
+          <a href="contact.html">Contact</a>
+          <a href="members.html">Members</a>
+          <a href="obog.html">OB・OG</a>
+          <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+        </div>
+        <p class="footer-place">駒場キャンパス第一体育館</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

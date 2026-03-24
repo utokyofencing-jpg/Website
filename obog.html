@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OB・OG | 東京大学運動会フェンシング部">
+  <title>OB・OG | 東京大学運動会フェンシング部</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy: #0a1628; --deep-blue: #0d2247; --gold: #c9a84c; --gold-light: #e8c97a; --cream: #f5f0e8; --gray: #8a8a8a; --font-display: 'Cormorant Garamond', serif; --font-serif-jp: 'Noto Serif JP', serif; --font-ui: 'DM Sans', sans-serif; --line-body: 2.0; --line-heading: 1.1; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-ui); font-weight: 400; font-size: 0.95rem; line-height: var(--line-body); color: var(--cream); background: var(--navy); }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+    h1, h2, h3 { font-family: var(--font-serif-jp); font-weight: 400; line-height: var(--line-heading); }
+    nav.global-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 2rem; background: #0f2047; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.15); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-toggle { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; color: var(--cream); }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: currentColor; transition: opacity 0.2s, transform 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-links { flex: 1 1 auto; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0.5rem 1.25rem; min-width: 0; }
+    .nav-links a { font-family: var(--font-ui); font-weight: 400; font-size: 0.9rem; color: var(--cream); position: relative; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--gold-light); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+    main.page-main { padding: 6rem 1.5rem 4rem; min-height: 100vh; }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.2rem); color: var(--gold-light); text-align: center; margin: 0 0 2rem; letter-spacing: 0.02em; }
+    .obog-inner { max-width: min(92vw, 720px); margin: 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 2.5rem; }
+    .obog-section h2 {
+      font-family: var(--font-serif-jp);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin: 0 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      line-height: 1.5;
+    }
+    .obog-body { color: var(--cream); font-size: 0.95rem; line-height: 1.85; }
+    .obog-body p { margin: 0 0 1rem; }
+    .obog-body p:last-child { margin-bottom: 0; }
+    .obog-signoff { text-align: right; margin-top: 0.5rem !important; }
+    .obog-rules { color: var(--cream); font-size: 0.875rem; line-height: 1.8; }
+    .obog-rules .obog-chapter {
+      font-family: var(--font-serif-jp);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin: 1.75rem 0 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .obog-rules .obog-chapter:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .obog-rule-label { margin: 0.85rem 0 0.35rem; color: var(--gray); font-size: 0.82rem; }
+    .obog-rule { margin: 0 0 0.65rem; }
+    .obog-rule-sub { margin: 0.35rem 0 0.65rem; padding-left: 1em; text-indent: -1em; }
+    .obog-item { margin: 0.35rem 0 0.35rem 1em; }
+    .obog-supplementary { margin: 1.25rem 0 0; padding-top: 1rem; border-top: 1px solid rgba(201, 168, 76, 0.12); color: var(--gray); font-size: 0.82rem; }
+    .obog-supplementary + .obog-supplementary { margin-top: 0.35rem; padding-top: 0; border-top: none; }
+    footer.site-footer { padding: 2rem 1.5rem; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(201, 168, 76, 0.15); }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 960px; margin: 0 auto; align-items: center; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; color: var(--cream); margin: 0 0 0.25rem; }
+    .footer-en { font-size: 0.8rem; color: var(--gray); margin: 0 0 0.5rem; }
+    .footer-since { font-family: var(--font-serif-jp); font-size: 0.8rem; color: var(--cream); margin: 0 0 0.5rem; }
+    .footer-copy { font-size: 0.75rem; color: var(--gray); margin: 0; }
+    .footer-right { text-align: right; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-end; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.85rem; color: var(--gray); }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-place { font-size: 0.8rem; color: var(--gray); margin: 0; }
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 1rem; background: #0f2047; border-bottom: 1px solid rgba(201, 168, 76, 0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .global-nav.is-open .nav-links { display: flex; }
+      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid rgba(201, 168, 76, 0.08); }
+      .nav-links a:last-child { border-bottom: none; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-right { text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="global-nav" aria-label="メインメニュー">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="U Tokyo FENCING TEAM"></a>
+    <button type="button" class="nav-toggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="results.html">Results</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="newcomers.html">Newcomers</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html">Members</a>
+      <a href="obog.html" class="active">OB・OG</a>
+      <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+    </div>
+  </nav>
+  <script>(function(){var n=document.querySelector('.global-nav');var b=document.querySelector('.nav-toggle');if(b){b.addEventListener('click',function(){var open=n.classList.toggle('is-open');b.setAttribute('aria-expanded',open);});}})();</script>
+
+  <main class="page-main">
+    <h1 class="section-title">OB・OG</h1>
+    <div class="obog-inner">
+      <section class="obog-section">
+        <h2>練習参加していただけるOB・OGの皆様へ</h2>
+        <div class="obog-body">
+          <p>　いつも暖かいご支援・ご協力ありがとうございます。もし練習に参加していただける場合は、お手数ですが部のInstagram/X/メールにて一度連絡していただけると幸いです。</p>
+          <p>　その際に、練習参加のGoogleフォームのURLを共有させていただきますので、そちらを送っていただければ参加していただけます。</p>
+          <p>　よろしくお願いいたします。</p>
+          <p class="obog-signoff">現役部員一同</p>
+        </div>
+      </section>
+      <section class="obog-section">
+        <h2>OB・OG会規則</h2>
+        <div class="obog-rules">
+          <h3 class="obog-chapter">第１章　総　則</h3>
+          <p class="obog-rule-label">（名称）</p>
+          <p class="obog-rule">第１条　本会は，東京大学運動会フェンシング部OB・OG会と称する。</p>
+          <p class="obog-rule-label">（目的）</p>
+          <p class="obog-rule">第２条　本会は，東京大学運動会フェンシング部の諸活動に対する各種の支援，及び会員相互の親睦を図ることを目的とする。</p>
+          <p class="obog-rule-label">（事業）</p>
+          <p class="obog-rule">第３条　本会は，前条の目的を達成するために次の各号の事業を行う。</p>
+          <p class="obog-item">（１）会費の徴収，及び徴収会費の東京大学運動会フェンシング部に対する寄付</p>
+          <p class="obog-item">（２）東京大学運動会フェンシング部の戦力強化に関する助言（監督，コーチの人選及び任命を含む。ただし，本号の事業は，現役部員が本会に対して要請を行った場合に限りこれを行う。）</p>
+          <p class="obog-item">（３）OB・OG相互，及び現役部員との交流の場の設定</p>
+          <p class="obog-item">（４）会員及び現役部員名簿の管理</p>
+          <p class="obog-item">（５）その他本会の目的達成に必要な事項</p>
+          <p class="obog-rule-label">（事務局）</p>
+          <p class="obog-rule">第４条　本会の事務局は，東京都目黒区駒場３丁目８番１号キャンパスプラザB１１４東京大学運動会フェンシング部内に置く。</p>
+
+          <h3 class="obog-chapter">第２章　会　員</h3>
+          <p class="obog-rule-label">（会員）</p>
+          <p class="obog-rule">第５条　本会は，東京大学運動会フェンシング部に在籍したことがある者，又は部長，コーチ等の経験者で，本会の目的に賛同する者を会員とする。</p>
+          <p class="obog-rule-sub">２　物故者は退会したものとする。</p>
+
+          <h3 class="obog-chapter">第３章　役　員</h3>
+          <p class="obog-rule-label">（役員）</p>
+          <p class="obog-rule">第６条　本会には，次の役員を置く。</p>
+          <p class="obog-item">（１）会長　１名</p>
+          <p class="obog-item">（２）副会長　１名</p>
+          <p class="obog-item">（３）事務局長　１名</p>
+          <p class="obog-item">（４）幹事　若干名</p>
+          <p class="obog-item">（５）会計　１名</p>
+          <p class="obog-rule-label">（役員の選出）</p>
+          <p class="obog-rule">第７条　前条の役員は，会員の中から総会において選出する。</p>
+          <p class="obog-rule-label">（役員の職務）</p>
+          <p class="obog-rule">第８条　役員は次の職務を行う。</p>
+          <p class="obog-item">（１）会長　本会を代表して会務を統括する。</p>
+          <p class="obog-item">（２）副会長　会長補佐，及び会長が会務を執行できない場合の代行を行う。</p>
+          <p class="obog-item">（３）事務局長　総会日程の調整，会員名簿の管理その他の会務を執行する。</p>
+          <p class="obog-item">（４）幹事　現役部員との連絡調整，事務局長の補佐等を行う。</p>
+          <p class="obog-item">（５）会計　OB・OG会費の入出金，決算報告の作成，その他会費の管理を行う。</p>
+          <p class="obog-rule-label">（任期）</p>
+          <p class="obog-rule">第９条　役員の任期は第１４条に定める会計年度に相当する１年とする。ただし，再選を妨げない。</p>
+          <p class="obog-rule-label">（役員会）</p>
+          <p class="obog-rule">第１０条　役員会は会長が議長として召集する。</p>
+          <p class="obog-rule-sub">２　役員会の議事は出席役員の過半数でこれを決し，可否同数の時は議長の決するところによる。</p>
+          <p class="obog-rule-sub">３　前２項にかかわらず，全役員が予め了解した場合は，役員会の開催にかえ電子メール等の方法により役員会としての意思決定ができるものとし，その効力は役員会を開催した場合と同一とする。</p>
+
+          <h3 class="obog-chapter">第４章　総　会</h3>
+          <p class="obog-rule-label">（総会の目的等）</p>
+          <p class="obog-rule">第１１条　本会の事業に関する基本方針の決定，役員の選出，会則変更の決議，及び会員相互の親睦を図るため，本会は年１回通常総会を開催するものとする。ただし，緊急に必要があるときは，臨時に総会を開くことができる。</p>
+          <p class="obog-rule-label">（総会の運営）</p>
+          <p class="obog-rule">第１２条　総会は会長が招集する。</p>
+          <p class="obog-rule-sub">２　総会の議長は事務局長がこれを行う。ただし，事務局長が出席できない場合は，出席会員の互選により議長を選出する。</p>
+          <p class="obog-rule-sub">３　総会の議事は出席会員の過半数でこれを決し，可否同数の時は会長（会長欠席の場合は議長）の決するところによる。</p>
+
+          <h3 class="obog-chapter">第５章　会　計</h3>
+          <p class="obog-rule-label">（会費）</p>
+          <p class="obog-rule">第１３条　会員は，年会費として前年度の総会で決定された金額を納めるものとする。</p>
+          <p class="obog-rule-label">（会計年度）</p>
+          <p class="obog-rule">第１４条　本会の会計年度は，毎年４月１日から始まり，翌年３月３１日に終わるものとする。</p>
+          <p class="obog-rule-label">（決算）</p>
+          <p class="obog-rule">第１５条　会計は，会計年度終了後速やかに決算報告書を作成し，会長に報告しなければならない。</p>
+          <p class="obog-rule-label">（公示）</p>
+          <p class="obog-rule">第１６条　会計は，前条の決算報告書を会員に公示しなければならない。</p>
+          <p class="obog-rule-label">（会合時の会費）</p>
+          <p class="obog-rule">第１７条　本会が，現役部員を出席対象とする会合を主催する場合は，職業に就いている会員から実費相当額の2倍を目処に会費を徴収し，これを現役部員に対する補助に充当する。この場合において，職業に就いていない会員は少なくとも実費相当額を支払うものとする。</p>
+
+          <h3 class="obog-chapter">第６章　個人情報の保護等</h3>
+          <p class="obog-rule-label">（個人情報の保護）</p>
+          <p class="obog-rule">第１８条　本会が第３条第４号に定める名簿を管理するにあたり，取得した個人情報は本会の事業を遂行する目的にのみ使用し，他の用途には一切これを用いない。</p>
+          <p class="obog-rule-label">（個人情報の管理方法）</p>
+          <p class="obog-rule">第１９条　前条にあたり，会員の個人情報は役員が責任をもってこれを管理する。</p>
+          <p class="obog-rule-sub">２　他の会員に関する個人情報の開示を依頼する場合は，その使途及び開示範囲を予め申し出た上で，会員の個人情報を管理する役員の承諾を得なければならない。</p>
+          <p class="obog-rule-sub">３　会員は，本会が管理している自らの個人情報の開示，及びその全部又は一部の変更，若しくは削除を申し出ることができる。</p>
+
+          <h3 class="obog-chapter">附　則</h3>
+          <p class="obog-rule">１　この会則は，２００９年４月１日から適用する。</p>
+          <p class="obog-rule">２　この会則作成以前の取り決め等は，本会則の適用日以降，全てこれを無効とする。</p>
+          <p class="obog-supplementary">※　２０２４年３月１６日一部改正</p>
+          <p class="obog-supplementary">※　２０２４年１０月１２日一部改正</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">The University of Tokyo Fencing Team</p>
+        <p class="footer-since">since 1936</p>
+        <p class="footer-en">東京大学運動会フェンシング部</p>
+        <p class="footer-copy">© 東京大学運動会フェンシング部 All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="results.html">Results</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="newcomers.html">Newcomers</a>
+          <a href="contact.html">Contact</a>
+          <a href="members.html">Members</a>
+          <a href="obog.html">OB・OG</a>
+          <a href="http://blog.livedoor.jp/todai_fencing/" target="_blank" rel="noopener">Blog</a>
+        </div>
+        <p class="footer-place">駒場キャンパス第一体育館</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
